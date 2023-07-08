@@ -24,7 +24,7 @@ const ModeSwitcherS = styled.div`
   font-size: var(--fs-sm);
   cursor: pointer;
   display: flex;
-  flex-direction: base-line
+  flex-direction: baseline
 `;
 
 export const Header = () => {
