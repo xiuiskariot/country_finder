@@ -27,7 +27,7 @@ body[data-theme="light"] {
   --colors-text: hsl(200, 15%, 8%);
   --colors-bg: hsl(0, 0%, 98%);
   --colors-ui-base: hsl(0, 0%, 100%);
-  --shadow: rgba(149, 157, 165, 0.2) 0 8 24px;
+  --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 body {
@@ -36,4 +36,10 @@ body {
   color: var(--colors-text);
   font-weight: var(--fw-light);
   background-color: var(--colors-bg);
+}
+
+input::-moz-placeholder  {
+  
+  font-size: var(--fs-md);
+  font-weight: var(--fw-light);
 }
