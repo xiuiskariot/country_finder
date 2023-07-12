@@ -9,6 +9,19 @@ import { useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
   const [countries, setCountries] = useState([]);
+
+  const [filtredCountries, setFiltredCountries] = useState(countries)
+
+  const handleSearch = (search, region) => {
+    let data = [...countries];
+    if (region) {
+      data = data.filter(el => el.region.includes(region))
+    }
+    if (search) {
+      data = data.filter(el => el.name.toLowerCase().includes(search.toLowerCase()))
+    }
+    setFiltredCountries(data)
+  }
   
 
   const navigate = useNavigate();
@@ -19,9 +32,9 @@ export const HomePage = () => {
   }, []);
   return (
     <>
-      <Controls />
+      <Controls onSearch={handleSearch } />
       <List>
-        {countries.map((el) => {
+        {filtredCountries.map((el) => {
           const countryInfo = {
             img: el.flags.png,
             name: el.name,

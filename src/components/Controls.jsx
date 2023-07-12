@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomSelect } from "./CustomSelect";
 import { Search } from "./Search";
 import styled from "styled-components";
@@ -8,12 +8,12 @@ const WrapperS = styled.div`
   flex-direction: column;
   align-items: flex-start;
 
-  @media(min-width: 767px) {
+  @media (min-width: 767px) {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
   }
-`
+`;
 
 const options = [
   { value: "Africa", label: "Africa" },
@@ -23,10 +23,15 @@ const options = [
   { value: "Oceania", label: "Oceania" },
 ];
 
-export const Controls = () => {
+export const Controls = ({ onSearch }) => {
   const [search, setSearch] = useState("");
-  const [region, setRegion] = useState("")
+  const [region, setRegion] = useState("");
 
+  useEffect(() => {
+    const regionValue = region?.value || "";
+    onSearch(search, regionValue);
+  // eslint-disable-next-line
+  }, [search, region]);
 
   return (
     <WrapperS>
